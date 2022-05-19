@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="SerialNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Name_Equipment">
+          <Key>
+            <PropertyRef Name="Nameid" />
+          </Key>
+          <Property Name="Nameid" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Equipment_name_of_the_equipment">
+          <End Role="Name_Equipment" Type="Self.Name_Equipment" Multiplicity="1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Name_Equipment">
+              <PropertyRef Name="Nameid" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Name_Equipment" EntityType="Self.Name_Equipment" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Equipment_name_of_the_equipment" Association="Self.FK_Equipment_name_of_the_equipment">
+            <End Role="Name_Equipment" EntitySet="Name_Equipment" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="SerialNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Name_Equipment" Relationship="Self.FK_Equipment_name_of_the_equipment" FromRole="Equipment" ToRole="Name_Equipment" />
+        </EntityType>
+        <EntityType Name="Name_Equipment">
+          <Key>
+            <PropertyRef Name="Nameid" />
+          </Key>
+          <Property Name="Nameid" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_Equipment_name_of_the_equipment" FromRole="Name_Equipment" ToRole="Equipment" />
+        </EntityType>
+        <Association Name="FK_Equipment_name_of_the_equipment">
+          <End Role="Name_Equipment" Type="Self.Name_Equipment" Multiplicity="1" />
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Name_Equipment">
+              <PropertyRef Name="Nameid" />
+            </Principal>
+            <Dependent Role="Equipment">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Equipment_accountingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" />
+          <EntitySet Name="Name_Equipment" EntityType="Self.Name_Equipment" />
+          <AssociationSet Name="FK_Equipment_name_of_the_equipment" Association="Self.FK_Equipment_name_of_the_equipment">
+            <End Role="Name_Equipment" EntitySet="Name_Equipment" />
+            <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Equipment_accountingEntities">
+          <EntitySetMapping Name="Equipment">
+            <EntityTypeMapping TypeName="Model.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Name_Equipment">
+            <EntityTypeMapping TypeName="Model.Name_Equipment">
+              <MappingFragment StoreEntitySet="Name_Equipment">
+                <ScalarProperty Name="Nameid" ColumnName="Nameid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
