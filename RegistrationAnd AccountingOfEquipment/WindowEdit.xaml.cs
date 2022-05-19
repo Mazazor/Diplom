@@ -24,19 +24,21 @@ namespace RegistrationAnd_AccountingOfEquipment
         public WindowEdit(Equipment selectedEquipment)
         {
             InitializeComponent();
-
+            
             if (selectedEquipment != null)
                 _currentequipment = selectedEquipment;
 
             DataContext = _currentequipment;
-            combobox.ItemsSource = Equipment_accountingEntities.GetContext().Name_Equipment.ToList();
             
+
+
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
-
+            
+            
             if (string.IsNullOrWhiteSpace(_currentequipment.Name_Equipment.Name))
                 errors.AppendLine("Укажите название оборудывания");
             if (_currentequipment.Quantity < 0)

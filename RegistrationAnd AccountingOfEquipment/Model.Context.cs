@@ -20,7 +20,6 @@ namespace RegistrationAnd_AccountingOfEquipment
             : base("name=Equipment_accountingEntities")
         {
         }
-
         public static Equipment_accountingEntities GetContext()
         {
             if (_context == null)
@@ -28,11 +27,13 @@ namespace RegistrationAnd_AccountingOfEquipment
 
             return _context;
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Authorization> Authorization { get; set; }
         public virtual DbSet<Equipment> Equipment { get; set; }
         public virtual DbSet<Name_Equipment> Name_Equipment { get; set; }
     }

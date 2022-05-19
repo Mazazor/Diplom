@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Equipment">
           <Key>
             <PropertyRef Name="id" />
@@ -20,24 +29,25 @@
           <Property Name="Nameid" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Equipment_name_of_the_equipment">
-          <End Role="Name_Equipment" Type="Self.Name_Equipment" Multiplicity="1" />
-          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+        <Association Name="FK_Name_Equipment_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="Name_Equipment" Type="Self.Name_Equipment" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Name_Equipment">
-              <PropertyRef Name="Nameid" />
-            </Principal>
-            <Dependent Role="Equipment">
+            <Principal Role="Equipment">
               <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Name_Equipment">
+              <PropertyRef Name="Nameid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Name_Equipment" EntityType="Self.Name_Equipment" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Equipment_name_of_the_equipment" Association="Self.FK_Equipment_name_of_the_equipment">
-            <End Role="Name_Equipment" EntitySet="Name_Equipment" />
+          <AssociationSet Name="FK_Name_Equipment_Equipment" Association="Self.FK_Name_Equipment_Equipment">
             <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Name_Equipment" EntitySet="Name_Equipment" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -45,6 +55,15 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="Equipment">
           <Key>
             <PropertyRef Name="id" />
@@ -52,7 +71,7 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="SerialNumber" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Name_Equipment" Relationship="Self.FK_Equipment_name_of_the_equipment" FromRole="Equipment" ToRole="Name_Equipment" />
+          <NavigationProperty Name="Name_Equipment" Relationship="Self.FK_Name_Equipment_Equipment" FromRole="Equipment" ToRole="Name_Equipment" />
         </EntityType>
         <EntityType Name="Name_Equipment">
           <Key>
@@ -60,26 +79,27 @@
           </Key>
           <Property Name="Nameid" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Equipment" Relationship="Self.FK_Equipment_name_of_the_equipment" FromRole="Name_Equipment" ToRole="Equipment" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_Name_Equipment_Equipment" FromRole="Name_Equipment" ToRole="Equipment" />
         </EntityType>
-        <Association Name="FK_Equipment_name_of_the_equipment">
-          <End Role="Name_Equipment" Type="Self.Name_Equipment" Multiplicity="1" />
-          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+        <Association Name="FK_Name_Equipment_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+          <End Role="Name_Equipment" Type="Self.Name_Equipment" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Name_Equipment">
-              <PropertyRef Name="Nameid" />
-            </Principal>
-            <Dependent Role="Equipment">
+            <Principal Role="Equipment">
               <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Name_Equipment">
+              <PropertyRef Name="Nameid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Equipment_accountingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" />
           <EntitySet Name="Equipment" EntityType="Self.Equipment" />
           <EntitySet Name="Name_Equipment" EntityType="Self.Name_Equipment" />
-          <AssociationSet Name="FK_Equipment_name_of_the_equipment" Association="Self.FK_Equipment_name_of_the_equipment">
-            <End Role="Name_Equipment" EntitySet="Name_Equipment" />
+          <AssociationSet Name="FK_Name_Equipment_Equipment" Association="Self.FK_Name_Equipment_Equipment">
             <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Name_Equipment" EntitySet="Name_Equipment" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -88,6 +108,16 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Equipment_accountingEntities">
+          <EntitySetMapping Name="Authorization">
+            <EntityTypeMapping TypeName="Model.Authorization">
+              <MappingFragment StoreEntitySet="Authorization">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Equipment">
             <EntityTypeMapping TypeName="Model.Equipment">
               <MappingFragment StoreEntitySet="Equipment">

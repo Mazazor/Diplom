@@ -33,7 +33,7 @@ namespace RegistrationAnd_AccountingOfEquipment
             equipmentwindow.Show();
             Close();
         }
-
+            
         private void Button_Dell_Click(object sender, RoutedEventArgs e)
         {
             var equipmentForRemoving = DataGrid.SelectedItems.Cast<Equipment>().ToList();
