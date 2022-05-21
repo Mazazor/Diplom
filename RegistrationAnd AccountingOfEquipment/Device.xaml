@@ -1,0 +1,44 @@
+﻿<Window x:Class="RegistrationAnd_AccountingOfEquipment.Device"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RegistrationAnd_AccountingOfEquipment"
+        mc:Ignorable="d"
+        Title="Device" Height="450" Width="800">
+    <Border Background="Azure" CornerRadius="35" Margin="5,5,5,5" Width="auto" Padding="20">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="50"/>
+        </Border.Effect>
+        <StackPanel Width="745" Margin="0,0,0,0">
+            <TabControl Margin="0,0,0,5" Height="345">
+                <TabItem x:Name="description" Header="Описание">
+                    <TabItem.Content>
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="170"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Row="0" HorizontalAlignment="Left">
+                                    <TextBlock Margin="5,25,5,5" Text="Наименование"/>
+                                    <TextBlock Margin="5,5,5,5" Text="Инвентарный номер"/>
+                                    <TextBlock Margin="5,5,5,5" Text="Тип устройства"/>
+                                    <TextBlock Margin="5,5,5,5" Text="Статус устройства"/>
+                                    <TextBlock Margin="5,5,5,5" Text="Помещение"/>
+                                    <TextBlock Margin="5,5,5,5" Text="Дата приобретения"/>
+                                    <TextBlock Margin="5,5,5,5" Text="Гарантийный срок(мес.)"/>
+                                    <TextBlock Margin="5,5,5,5" Text="Стоимость(руб.)"/>
+                                    <TextBlock Margin="5,5,5,5" Text="Ответственный сотрудник"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="specifications" Header="Характеристики">
+                    
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Border>
+</Window>

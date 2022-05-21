@@ -5,33 +5,319 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegistrationAnd_AccountingOfEquipment"
         mc:Ignorable="d"
-        Title="Регистрация учёт оборудования " Height="483" Width="808"
+        Title="Регистрация учёт оборудования " Height="550" Width="1000"
         IsVisibleChanged="Page_IsVisibleChanged">
-    <Border Background="Azure" CornerRadius="25" Margin="5,5,5,5" Width="auto" Padding="30">
+    <Border Background="Azure" CornerRadius="35" Margin="5,5,5,5" Width="auto" Padding="20">
         <Border.Effect>
             <DropShadowEffect BlurRadius="50"/>
         </Border.Effect>
-        <StackPanel Margin="0,9,7,0">
-            <TextBlock FontSize="30" FontWeight="Bold" Margin="0,0,137,10"><Run Text="Регистрация и учёт оборудования"/></TextBlock>
-            <DataGrid Height="270" Margin="10,0,10,0" x:Name="DataGrid" AutoGenerateColumns="False" IsReadOnly="True">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
-                    <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
-                    <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
-                    <DataGridTemplateColumn Width="auto">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    
-                </DataGrid.Columns>
-            </DataGrid>
-            <Grid>
-                <Button HorizontalAlignment="Left" Name="Button_Add" Click="Button_Add_Click" Content="Добавить" Margin="40,20,0,0"/>
-                <Button HorizontalAlignment="Left" Name="Button_Dell" Click="Button_Dell_Click" Content="Удалить" Margin="650,20,0,0"/>
-            </Grid>
+        <StackPanel Width="950" Margin="0,0,0,0">
+            <TabControl Margin="0,0,0,5" Height="480">
+                <TabItem x:Name="device" Header="Устройство">
+                    <TabItem.Content>
+                        <StackPanel>
+                            <StackPanel Margin="10,20,0,15">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="350"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="150"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0" Width="350" HorizontalAlignment="Left"/>
+                                    <Button Grid.Column="1" Width="100">поиск</Button>
+                                    <Button Grid.Column="2" Width="100">Печать</Button>
+                                    <Button Grid.Column="3" Width="125">Открыть в Excel</Button>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="735"/>
+                                        <ColumnDefinition Width="240"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DataGrid Height="355" Width="725" x:Name="DataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
+                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
+                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
+                                            <DataGridTemplateColumn Width="auto">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                                        <CheckBox Margin="5,5,5,5" Content="Показать все устройства"/>
+                                        <CheckBox Margin="5,5,5,5" Content="Выбрать статус устройства"/>
+                                        <ComboBox Margin="5,5,5,5"  Width="175"/>
+
+                                        <CheckBox Margin="5,5,5,5" Content="Выбрать тип устройства"/>
+                                        <ComboBox Margin="5,5,5,5" Width="175"></ComboBox>
+                                        <Button Margin="5,5,5,15" Height="25" Width="190" Content="Применить параметры выбора"/>
+
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Content="Подробнее"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add" Click="Button_Add_Click" Content="Добавить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit" Click="Button_Edit_Click" Content="Изменить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Dell" Click="Button_Dell_Click" Content="Удалить"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="software" Header="Программное обеспечение">
+                    <TabItem.Content>
+                        <StackPanel>
+                            <StackPanel Margin="10,20,0,15">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="350"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="150"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0" Width="350" HorizontalAlignment="Left"/>
+                                    <Button Grid.Column="1" Width="100">поиск</Button>
+                                    <Button Grid.Column="2" Width="100">Печать</Button>
+                                    <Button Grid.Column="3" Width="125">Открыть в Excel</Button>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="735"/>
+                                        <ColumnDefinition Width="240"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DataGrid Height="355" Width="725" x:Name="DataGrid1" AutoGenerateColumns="False" IsReadOnly="True">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
+                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
+                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
+                                            <DataGridTemplateColumn Width="auto">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                                        <TextBlock Text="Отобразить:" Margin="5,5,5,5"/>
+                                        <CheckBox Margin="5,5,5,5" Content="Всё ПО"/>
+                                        <CheckBox Margin="5,5,5,5" Content="Установленное"/>
+                                        <CheckBox Margin="5,5,5,5" Content="Не установленное"/>
+                                        <CheckBox Margin="5,5,5,65" Content="С истекшей лицензией"/>
+
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Content="Подробнее"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add1" Click="Button_Add_Click" Content="Добавить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit1" Click="Button_Edit_Click" Content="Изменить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Dell1" Click="Button_Dell_Click" Content="Удалить"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="Movements" Header="Перемещения">
+                    <TabItem.Content>
+                        <StackPanel>
+                            <StackPanel Margin="10,20,0,15">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="350"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="150"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0" Width="350" HorizontalAlignment="Left"/>
+                                    <Button Grid.Column="1" Width="100">поиск</Button>
+                                    <Button Grid.Column="2" Width="100">Печать</Button>
+                                    <Button Grid.Column="3" Width="125">Открыть в Excel</Button>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="735"/>
+                                        <ColumnDefinition Width="240"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DataGrid Height="355" Width="725" x:Name="DataGrid2" AutoGenerateColumns="False" IsReadOnly="True">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
+                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
+                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
+                                            <DataGridTemplateColumn Width="auto">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <StackPanel Grid.Column="1" Margin="0,160,0,0" HorizontalAlignment="Left">
+                                        <Button Margin="5,20,5,5" Width="190" Height="35" Content="Подробнее"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add2" Click="Button_Add_Click" Content="Добавить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit2" Click="Button_Edit_Click" Content="Изменить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Dell2" Click="Button_Dell_Click" Content="Удалить"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="RepairWork" Header="Ремонтные работы">
+                    <TabItem.Content>
+                        <StackPanel>
+                            <StackPanel Margin="10,20,0,15">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="350"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="150"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0" Width="350" HorizontalAlignment="Left"/>
+                                    <Button Grid.Column="1" Width="100">поиск</Button>
+                                    <Button Grid.Column="2" Width="100">Печать</Button>
+                                    <Button Grid.Column="3" Width="125">Открыть в Excel</Button>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="735"/>
+                                        <ColumnDefinition Width="240"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DataGrid Height="355" Width="725" x:Name="DataGrid3" AutoGenerateColumns="False" IsReadOnly="True">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
+                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
+                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
+                                            <DataGridTemplateColumn Width="auto">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <StackPanel Grid.Column="1" Margin="0,160,0,0" HorizontalAlignment="Left">
+
+                                        <Button Margin="5,20,5,5" Width="190" Height="35" Content="Подробнее"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add3" Click="Button_Add_Click" Content="Добавить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit3" Click="Button_Edit_Click" Content="Изменить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Dell3" Click="Button_Dell_Click" Content="Удалить"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="Staff" Header="Сотрудники">
+                    <TabItem.Content>
+                        <StackPanel >
+                            <StackPanel Margin="10,20,0,15">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="350"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="150"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0" Width="350" HorizontalAlignment="Left"/>
+                                    <Button Grid.Column="1" Width="100">поиск</Button>
+                                    <Button Grid.Column="2" Width="100">Печать</Button>
+                                    <Button Grid.Column="3" Width="125">Открыть в Excel</Button>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="735"/>
+                                        <ColumnDefinition Width="240"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DataGrid Height="355" Width="725" x:Name="DataGrid4" AutoGenerateColumns="False" IsReadOnly="True">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
+                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
+                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
+                                            <DataGridTemplateColumn Width="auto">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                                        <CheckBox Margin="5,5,5,5" Content="Показать всех сотрудников"/>
+                                        <CheckBox Margin="5,5,5,5" Content="Выбрать отдел сотрудника"/>
+                                        <ComboBox Margin="5,5,5,5"  Width="175"/>
+
+                                        <CheckBox Margin="5,5,5,5" Content="Выбрать должность сотрудника"/>
+                                        <ComboBox Margin="5,5,5,5" Width="175"></ComboBox>
+                                        <Button Margin="5,5,5,5" Height="25" Width="190" Content="Применить параметры выбора"/>
+
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Content="Подробнее"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add4" Click="Button_Add_Click" Content="Добавить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit4" Click="Button_Edit_Click" Content="Изменить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Dell4" Click="Button_Dell_Click" Content="Удалить"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem.Content>
+                </TabItem>
+                <TabItem x:Name="Reports" Header="Отчёты">
+                    <TabItem.Content>
+                        <StackPanel>
+                            <StackPanel Margin="10,20,0,15">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="350"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="120"/>
+                                        <ColumnDefinition  Width="150"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="2" Width="100">Печать</Button>
+                                    <Button Grid.Column="3" Width="125">Открыть в Excel</Button>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="735"/>
+                                        <ColumnDefinition Width="240"/>
+                                    </Grid.ColumnDefinitions>
+                                    <DataGrid Height="355" Width="725" x:Name="DataGrid5" AutoGenerateColumns="False" IsReadOnly="True">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
+                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
+                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                                        <Button Margin="5,5,5,5" Width="190" Height="45" >
+                                            <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow" Text="ПО и устройства, на которых оно установлено"/>
+                                        </Button>
+                                        <Button Margin="5,5,5,5" Width="190" Height="45" >
+                                            <TextBlock TextAlignment="Center"  TextWrapping="WrapWithOverflow" Text="Устройства и ПО, которое на них установлено"/>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </TabItem.Content>
+                </TabItem>
+            </TabControl>
         </StackPanel>
     </Border>
 </Window>
