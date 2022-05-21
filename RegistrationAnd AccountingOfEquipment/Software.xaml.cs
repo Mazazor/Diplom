@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace RegistrationAnd_AccountingOfEquipment
 {
     /// <summary>
-    /// Логика взаимодействия для Device.xaml
+    /// Логика взаимодействия для Software.xaml
     /// </summary>
-    public partial class Device : Window
+    public partial class Software : Window
     {
-        public Device()
+        public Software()
         {
             InitializeComponent();
-        }
-
-        private void divassetab_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
         }
     }
 }

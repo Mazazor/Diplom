@@ -5,40 +5,96 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegistrationAnd_AccountingOfEquipment"
         mc:Ignorable="d"
-        Title="Device" Height="450" Width="800">
+        Title="Устройство" Height="455" Width="815">
     <Border Background="Azure" CornerRadius="35" Margin="5,5,5,5" Width="auto" Padding="20">
         <Border.Effect>
             <DropShadowEffect BlurRadius="50"/>
         </Border.Effect>
         <StackPanel Width="745" Margin="0,0,0,0">
-            <TabControl Margin="0,0,0,5" Height="345">
+            <TabControl Margin="0,0,0,5" Height="335">
                 <TabItem x:Name="description" Header="Описание">
                     <TabItem.Content>
                         <StackPanel>
                             <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="170"/>
-                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="550"/>
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Row="0" HorizontalAlignment="Left">
-                                    <TextBlock Margin="5,25,5,5" Text="Наименование"/>
-                                    <TextBlock Margin="5,5,5,5" Text="Инвентарный номер"/>
-                                    <TextBlock Margin="5,5,5,5" Text="Тип устройства"/>
-                                    <TextBlock Margin="5,5,5,5" Text="Статус устройства"/>
-                                    <TextBlock Margin="5,5,5,5" Text="Помещение"/>
-                                    <TextBlock Margin="5,5,5,5" Text="Дата приобретения"/>
-                                    <TextBlock Margin="5,5,5,5" Text="Гарантийный срок(мес.)"/>
-                                    <TextBlock Margin="5,5,5,5" Text="Стоимость(руб.)"/>
-                                    <TextBlock Margin="5,5,5,5" Text="Ответственный сотрудник"/>
+                                <TextBlock Grid.Row="1" Margin="5,5,5,5" Text="Наименование"/>
+                                <TextBlock Grid.Row="2" Margin="5,5,5,5" Text="Инвентарный номер"/>
+                                <TextBlock Grid.Row="3" Margin="5,5,5,5" Text="Тип устройства"/>
+                                <TextBlock Grid.Row="4" Margin="5,5,5,5" Text="Статус устройства"/>
+                                <TextBlock Grid.Row="5" Margin="5,5,5,5" Text="Помещение"/>
+                                <TextBlock Grid.Row="6" Margin="5,5,5,5" Text="Дата приобретения"/>
+                                <TextBlock Grid.Row="7" Margin="5,5,5,5" Text="Гарантийный срок(мес.)"/>
+                                <TextBlock Grid.Row="8" Margin="5,5,5,5" Text="Стоимость(руб.)"/>
+                                <TextBlock Grid.Row="9" Margin="5,5,5,5" Text="Ответственный сотрудник"/>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left" Width="250"/>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left" Width="150"/>
+                                <StackPanel Grid.Row="3" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left" Orientation="Horizontal">
+                                        <ComboBox  Width="150"></ComboBox>
+                                        <TextBlock Margin="5,0,0,0" x:Name="divasetabadd" TextDecorations="Underline" Text="Добавить" Foreground="red"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="4" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left" Orientation="Horizontal">
+                                    <ComboBox  Width="150"></ComboBox>
+                                    <TextBlock Margin="5,0,0,0" x:Name="statusadd" TextDecorations="Underline" Text="Добавить" Foreground="red"/>
+                                </StackPanel>
+                                <TextBox Grid.Row="5" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left" Width="150"/>
+                                <DatePicker Grid.Row="6" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left"  Width="150" IsDropDownOpen="False" SelectedDateFormat="Short" />
+                                <StackPanel Grid.Row="7" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left"  Orientation="Horizontal">
+                                    <TextBox Width="150"/>
+                                    <TextBlock Margin="5,0,0,0" TextDecorations="Underline" Text="Истёк гарантийный срок" Foreground="red"/>
+                                </StackPanel>
+                                <TextBox Grid.Row="8" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left" Width="150"/>
+                                <StackPanel Grid.Row="9" Grid.Column="1" Margin="5,5,5,5" HorizontalAlignment="Left" Orientation="Horizontal">
+                                    <ComboBox  Width="150"></ComboBox>
+                                    <TextBlock Margin="5,0,0,0" TextDecorations="Underline" Text="Добавить" Foreground="red"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
                     </TabItem.Content>
                 </TabItem>
                 <TabItem x:Name="specifications" Header="Характеристики">
-                    
+                    <TabItem.Content>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <TextBlock Margin="5,10,5,7" VerticalAlignment="Bottom" Text="Характеристики устройства"/>
+                            <Button  Grid.Column="1" Content="Добавить характеристику" Margin="0,5,5,7" Height="25" Width="150" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+
+                            <DataGrid Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Height="255">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Характеристика" Binding="{Binding Name_Equipment.Name}" Width="150"/>
+                                    <DataGridTextColumn Header="Значение" Binding="{Binding Quantity}" Width="80"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </TabItem.Content>
                 </TabItem>
             </TabControl>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="5,5,5,5" Width="75" Content="Назад" />
+                <Button Margin="5,5,5,5" Width="75" Content="Сохранить"/>
+            </StackPanel>
         </StackPanel>
     </Border>
 </Window>

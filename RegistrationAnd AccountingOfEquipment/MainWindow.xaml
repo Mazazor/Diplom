@@ -114,7 +114,7 @@
                                         <CheckBox Margin="5,5,5,65" Content="С истекшей лицензией"/>
 
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Content="Подробнее"/>
-                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add1" Click="Button_Add_Click" Content="Добавить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add1"  Content="Добавить" Click="Button_Add1_Click"/>
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit1" Click="Button_Edit_Click" Content="Изменить"/>
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Dell1" Click="Button_Dell_Click" Content="Удалить"/>
                                     </StackPanel>
@@ -267,7 +267,7 @@
                                         <Button Margin="5,5,5,5" Height="25" Width="190" Content="Применить параметры выбора"/>
 
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Content="Подробнее"/>
-                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add4" Click="Button_Add_Click" Content="Добавить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add4"  Content="Добавить" Click="Button_Add4_Click"/>
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit4" Click="Button_Edit_Click" Content="Изменить"/>
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Dell4" Click="Button_Dell_Click" Content="Удалить"/>
                                     </StackPanel>

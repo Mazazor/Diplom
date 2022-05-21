@@ -29,7 +29,7 @@ namespace RegistrationAnd_AccountingOfEquipment
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
             
-            WindowEdit equipmentwindow = new WindowEdit(null);
+            Device equipmentwindow = new Device();
             equipmentwindow.Show();
             Close();
         }
@@ -72,6 +72,19 @@ namespace RegistrationAnd_AccountingOfEquipment
                 DataGrid.ItemsSource = Equipment_accountingEntities.GetContext().Equipment.ToList();
             }
         }
-        
+
+        private void Button_Add4_Click(object sender, RoutedEventArgs e)
+        {
+            Employee equipmentwindow = new Employee();
+            equipmentwindow.Show();
+            Close();
+        }
+
+        private void Button_Add1_Click(object sender, RoutedEventArgs e)
+        {
+            Software equipmentwindow = new Software();
+            equipmentwindow.Show();
+            Close();
+        }
     }
 }
