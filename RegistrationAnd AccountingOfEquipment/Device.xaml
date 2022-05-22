@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegistrationAnd_AccountingOfEquipment"
         mc:Ignorable="d"
-        Title="Устройство" Height="455" Width="815">
+        Title="Устройство" Height="455" Width="570">
     <Border Background="Azure" CornerRadius="35" Margin="5,5,5,5" Width="auto" Padding="20">
         <Border.Effect>
             <DropShadowEffect BlurRadius="50"/>
         </Border.Effect>
-        <StackPanel Width="745" Margin="0,0,0,0">
+        <StackPanel Width="500" Margin="0,0,0,0">
             <TabControl Margin="0,0,0,5" Height="335">
                 <TabItem x:Name="description" Header="Описание">
                     <TabItem.Content>

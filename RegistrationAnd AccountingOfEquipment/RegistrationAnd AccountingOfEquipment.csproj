@@ -99,11 +99,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddingType.xaml.cs">
+      <DependentUpon>AddingType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Authorization.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Device.xaml.cs">
       <DependentUpon>Device.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceRepair.xaml.cs">
+      <DependentUpon>DeviceRepair.xaml</DependentUpon>
     </Compile>
     <Compile Include="Equipment.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -123,6 +129,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MovingDevice.xaml.cs">
+      <DependentUpon>MovingDevice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Name_Equipment.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -135,7 +144,15 @@
     <Compile Include="WindowEdit.xaml.cs">
       <DependentUpon>WindowEdit.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddingType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Device.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeviceRepair.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +169,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Employee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MovingDevice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

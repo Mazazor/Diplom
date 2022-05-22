@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegistrationAnd_AccountingOfEquipment"
         mc:Ignorable="d"
-        Title="Программное обеспечение" Height="550" Width="1000">
+        Title="Программное обеспечение" Height="550" Width="1020">
     <Border Background="Azure" CornerRadius="35" Margin="5,5,5,5" Width="auto" Padding="20">
         <Border.Effect>
             <DropShadowEffect BlurRadius="50"/>

@@ -31,7 +31,7 @@ namespace RegistrationAnd_AccountingOfEquipment
             
             Device equipmentwindow = new Device();
             equipmentwindow.Show();
-            Close();
+            
         }
             
         private void Button_Dell_Click(object sender, RoutedEventArgs e)
@@ -77,14 +77,34 @@ namespace RegistrationAnd_AccountingOfEquipment
         {
             Employee equipmentwindow = new Employee();
             equipmentwindow.Show();
-            Close();
+            
         }
 
         private void Button_Add1_Click(object sender, RoutedEventArgs e)
         {
             Software equipmentwindow = new Software();
             equipmentwindow.Show();
-            Close();
+            
+        }
+
+        private void Button_Add3_Click(object sender, RoutedEventArgs e)
+        {
+            DeviceRepair equipmentwindow = new DeviceRepair();
+            equipmentwindow.Show();
+            
+        }
+
+        private void Button_Add2_Click(object sender, RoutedEventArgs e)
+        {
+            MovingDevice equipmentwindow = new MovingDevice();
+            equipmentwindow.Show();
+
+        }
+
+        private void Button_Edit1_Click(object sender, RoutedEventArgs e)
+        {
+            AddingType equipmentwindow = new AddingType();
+            equipmentwindow.Show();
         }
     }
 }

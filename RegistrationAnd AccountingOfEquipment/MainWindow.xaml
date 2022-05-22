@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RegistrationAnd_AccountingOfEquipment"
         mc:Ignorable="d"
-        Title="Регистрация учёт оборудования " Height="550" Width="1000"
+        Title="Регистрация учёт оборудования " Height="570" Width="1020"
         IsVisibleChanged="Page_IsVisibleChanged">
     <Border Background="Azure" CornerRadius="35" Margin="5,5,5,5" Width="auto" Padding="20">
         <Border.Effect>
@@ -115,7 +115,7 @@
 
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Content="Подробнее"/>
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add1"  Content="Добавить" Click="Button_Add1_Click"/>
-                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit1" Click="Button_Edit_Click" Content="Изменить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit1"  Content="Изменить" Click="Button_Edit1_Click"/>
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Dell1" Click="Button_Dell_Click" Content="Удалить"/>
                                     </StackPanel>
                                 </Grid>
@@ -162,7 +162,7 @@
                                     </DataGrid>
                                     <StackPanel Grid.Column="1" Margin="0,160,0,0" HorizontalAlignment="Left">
                                         <Button Margin="5,20,5,5" Width="190" Height="35" Content="Подробнее"/>
-                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add2" Click="Button_Add_Click" Content="Добавить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add2"  Content="Добавить" Click="Button_Add2_Click"/>
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit2" Click="Button_Edit_Click" Content="Изменить"/>
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Dell2" Click="Button_Dell_Click" Content="Удалить"/>
                                     </StackPanel>
@@ -211,7 +211,7 @@
                                     <StackPanel Grid.Column="1" Margin="0,160,0,0" HorizontalAlignment="Left">
 
                                         <Button Margin="5,20,5,5" Width="190" Height="35" Content="Подробнее"/>
-                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add3" Click="Button_Add_Click" Content="Добавить"/>
+                                        <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Add3"  Content="Добавить" Click="Button_Add3_Click"/>
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Edit3" Click="Button_Edit_Click" Content="Изменить"/>
                                         <Button Margin="5,5,5,5" Width="190" Height="35" Name="Button_Dell3" Click="Button_Dell_Click" Content="Удалить"/>
                                     </StackPanel>
