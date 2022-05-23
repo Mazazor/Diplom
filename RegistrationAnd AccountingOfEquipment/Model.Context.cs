@@ -33,8 +33,18 @@ namespace RegistrationAnd_AccountingOfEquipment
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Authorization> Authorization { get; set; }
-        public virtual DbSet<Equipment> Equipment { get; set; }
-        public virtual DbSet<Name_Equipment> Name_Equipment { get; set; }
+        public virtual DbSet<Characteristic> Characteristic { get; set; }
+        public virtual DbSet<Department> Department { get; set; }
+        public virtual DbSet<Device> Device { get; set; }
+        public virtual DbSet<DeviceMovement> DeviceMovement { get; set; }
+        public virtual DbSet<DeviceStatus> DeviceStatus { get; set; }
+        public virtual DbSet<DeviceType> DeviceType { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Post> Post { get; set; }
+        public virtual DbSet<RepairWork> RepairWork { get; set; }
+        public virtual DbSet<Room> Room { get; set; }
+        public virtual DbSet<Software> Software { get; set; }
+        public virtual DbSet<SoftwareInstallation> SoftwareInstallation { get; set; }
+        public virtual DbSet<SoftwareType> SoftwareType { get; set; }
     }
 }

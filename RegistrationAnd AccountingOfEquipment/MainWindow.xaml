@@ -38,16 +38,11 @@
                                     </Grid.ColumnDefinitions>
                                     <DataGrid Height="355" Width="725" x:Name="DataGrid" AutoGenerateColumns="False" IsReadOnly="True">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
-                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
-                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
-                                            <DataGridTemplateColumn Width="auto">
-                                                <DataGridTemplateColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
-                                                    </DataTemplate>
-                                                </DataGridTemplateColumn.CellTemplate>
-                                            </DataGridTemplateColumn>
+                                            <DataGridTextColumn Header="Инвениарный номер" Binding="{Binding InventoryNumber}" Width="150"/>
+                                            <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="140"/>
+                                            <DataGridTextColumn Header="Тип" Binding="{Binding DeviceType.Name}" Width="90"/>
+                                            <DataGridTextColumn Header="Статус" Binding="{Binding DeviceStatus.Name}" Width="90"/>
+                                            <DataGridTextColumn Header="Помещение" Binding="{Binding Room.Name}" Width="200"/>
                                         </DataGrid.Columns>
                                     </DataGrid>
                                     <StackPanel Grid.Column="1" HorizontalAlignment="Left">
@@ -94,16 +89,11 @@
                                     </Grid.ColumnDefinitions>
                                     <DataGrid Height="355" Width="725" x:Name="DataGrid1" AutoGenerateColumns="False" IsReadOnly="True">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
-                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
-                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
-                                            <DataGridTemplateColumn Width="auto">
-                                                <DataGridTemplateColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
-                                                    </DataTemplate>
-                                                </DataGridTemplateColumn.CellTemplate>
-                                            </DataGridTemplateColumn>
+                                            <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="100"/>
+                                            <DataGridTextColumn Header="Тип ПО" Binding="{Binding SoftwareType.Name}" Width="100"/>
+                                            <DataGridTextColumn Header="Необходимость Лицензионного ключа" Binding="{Binding LicenseKey}" Width="240"/>
+                                            <DataGridTextColumn Header="Дата приобретения" Binding="{Binding DataOfPurchase}" Width="140"/>
+                                            <DataGridTextColumn Header="Длительность Лицензии" Binding="{Binding LicenseKeyDuration}" Width="150"/>
                                         </DataGrid.Columns>
                                     </DataGrid>
                                     <StackPanel Grid.Column="1" HorizontalAlignment="Left">
@@ -148,16 +138,12 @@
                                     </Grid.ColumnDefinitions>
                                     <DataGrid Height="355" Width="725" x:Name="DataGrid2" AutoGenerateColumns="False" IsReadOnly="True">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
-                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
-                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
-                                            <DataGridTemplateColumn Width="auto">
-                                                <DataGridTemplateColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
-                                                    </DataTemplate>
-                                                </DataGridTemplateColumn.CellTemplate>
-                                            </DataGridTemplateColumn>
+                                            <DataGridTextColumn Header="Устройство" Binding="{Binding Device.Name}" Width="77"/>
+                                            <DataGridTextColumn Header="Ивентарный номер" Binding="{Binding Device.InventoryNumber}" Width="120"/>
+                                            <DataGridTextColumn Header="Дата перемещения" Binding="{Binding DateOfMovement}" Width="130"/>
+                                            <DataGridTextColumn Header="Прежнее место" Binding="{Binding Room.Name}" Width="120"/>
+                                            <DataGridTextColumn Header="Новое место" Binding="{Binding Room.Name}" Width="120"/>
+                                            <DataGridTextColumn Header="Ответственный сотрудник" Binding="{Binding Employee.Name.Surname.Patronymic}" Width="200"/>
                                         </DataGrid.Columns>
                                     </DataGrid>
                                     <StackPanel Grid.Column="1" Margin="0,160,0,0" HorizontalAlignment="Left">
@@ -196,16 +182,11 @@
                                     </Grid.ColumnDefinitions>
                                     <DataGrid Height="355" Width="725" x:Name="DataGrid3" AutoGenerateColumns="False" IsReadOnly="True">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
-                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
-                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
-                                            <DataGridTemplateColumn Width="auto">
-                                                <DataGridTemplateColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
-                                                    </DataTemplate>
-                                                </DataGridTemplateColumn.CellTemplate>
-                                            </DataGridTemplateColumn>
+                                            <DataGridTextColumn Header="Инвентарный номер" Binding="{Binding Device.InventoryNumber}" Width="135"/>
+                                            <DataGridTextColumn Header="Название устройства" Binding="{Binding Device.Name}" Width="135"/>
+                                            <DataGridTextColumn Header="Дата начала работ" Binding="{Binding StartOfWork}" Width="120"/>
+                                            <DataGridTextColumn Header="Дата окончания работ" Binding="{Binding EndOfWork}" Width="140"/>
+                                            <DataGridTextColumn Header="Мастер" Binding="{Binding Employee.Name}" Width="190"/>
                                         </DataGrid.Columns>
                                     </DataGrid>
                                     <StackPanel Grid.Column="1" Margin="0,160,0,0" HorizontalAlignment="Left">
@@ -245,16 +226,10 @@
                                     </Grid.ColumnDefinitions>
                                     <DataGrid Height="355" Width="725" x:Name="DataGrid4" AutoGenerateColumns="False" IsReadOnly="True">
                                         <DataGrid.Columns>
-                                            <DataGridTextColumn Header="Название" Binding="{Binding Name_Equipment.Name}" Width="150"/>
-                                            <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="80"/>
-                                            <DataGridTextColumn Header="Серийный номер" Binding="{Binding SerialNumber}" Width="200"/>
-                                            <DataGridTemplateColumn Width="auto">
-                                                <DataGridTemplateColumn.CellTemplate>
-                                                    <DataTemplate>
-                                                        <Button Content="Редактировать" Name="Button_Edit" Click="Button_Edit_Click"/>
-                                                    </DataTemplate>
-                                                </DataGridTemplateColumn.CellTemplate>
-                                            </DataGridTemplateColumn>
+                                            <DataGridTextColumn Header="Фио" Binding="{Binding Name}" Width="150"/>
+                                            <DataGridTextColumn Header="Должность" Binding="{Binding Post.Name}" Width="100"/>
+                                            <DataGridTextColumn Header="Отдел" Binding="{Binding Department.Name}" Width="100"/>
+                                            <DataGridTextColumn Header="Электронная почта" Binding="{Binding Email}" Width="200"/>
                                         </DataGrid.Columns>
                                     </DataGrid>
                                     <StackPanel Grid.Column="1" HorizontalAlignment="Left">

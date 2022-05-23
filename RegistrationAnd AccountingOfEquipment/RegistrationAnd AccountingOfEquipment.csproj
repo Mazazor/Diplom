@@ -102,16 +102,31 @@
     <Compile Include="AddingType.xaml.cs">
       <DependentUpon>AddingType.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Authorization.cs">
+    <Compile Include="Characteristic.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Device.xaml.cs">
-      <DependentUpon>Device.xaml</DependentUpon>
+    <Compile Include="Department.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Device.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceWindow.xaml.cs">
+      <DependentUpon>DeviceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceMovement.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DeviceRepair.xaml.cs">
       <DependentUpon>DeviceRepair.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Equipment.cs">
+    <Compile Include="DeviceStatus.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceType.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.cs">
@@ -132,23 +147,35 @@
     <Compile Include="MovingDevice.xaml.cs">
       <DependentUpon>MovingDevice.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Name_Equipment.cs">
+    <Compile Include="EmployeeWindow.xaml.cs">
+      <DependentUpon>EmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Post.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Employee.xaml.cs">
-      <DependentUpon>Employee.xaml</DependentUpon>
+    <Compile Include="RepairWork.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Software.xaml.cs">
-      <DependentUpon>Software.xaml</DependentUpon>
+    <Compile Include="Room.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="WindowEdit.xaml.cs">
-      <DependentUpon>WindowEdit.xaml</DependentUpon>
+    <Compile Include="Software.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftwareWindow.xaml.cs">
+      <DependentUpon>SoftwareWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SoftwareInstallation.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoftwareType.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Page Include="AddingType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Device.xaml">
+    <Page Include="DeviceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,7 +195,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Employee.xaml">
+    <Page Include="EmployeeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,11 +203,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Software.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WindowEdit.xaml">
+    <Page Include="SoftwareWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

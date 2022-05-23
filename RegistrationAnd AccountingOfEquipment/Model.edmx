@@ -4,102 +4,856 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Authorization">
+      <Schema Namespace="Хранилище ComputerTechniqueModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Characteristic">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID_Characteristic" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Characteristic" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="50" />
+          <Property Name="Device" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Equipment">
+        <EntityType Name="Department">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID_Department" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="SerialNumber" Type="int" Nullable="false" />
+          <Property Name="ID_Department" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="40" Nullable="false" />
         </EntityType>
-        <EntityType Name="Name_Equipment">
+        <EntityType Name="Device">
           <Key>
-            <PropertyRef Name="Nameid" />
+            <PropertyRef Name="ID_Device" />
           </Key>
-          <Property Name="Nameid" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ID_Device" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="InventoryNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DeviceType" Type="int" Nullable="false" />
+          <Property Name="DeviceStatus" Type="int" Nullable="false" />
+          <Property Name="Room" Type="int" Nullable="false" />
+          <Property Name="DateOfPurchase" Type="datetime" Nullable="false" />
+          <Property Name="GuarantyPeriod" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="ResponsibleEmployee" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Name_Equipment_Equipment">
-          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
-          <End Role="Name_Equipment" Type="Self.Name_Equipment" Multiplicity="0..1" />
+        <EntityType Name="DeviceMovement">
+          <Key>
+            <PropertyRef Name="ID_DeviceMovement" />
+          </Key>
+          <Property Name="ID_DeviceMovement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Device" Type="int" Nullable="false" />
+          <Property Name="DateOfMovement" Type="datetime" Nullable="false" />
+          <Property Name="Employee" Type="int" Nullable="false" />
+          <Property Name="PreviousRoom" Type="int" Nullable="false" />
+          <Property Name="NewRoom" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceStatus">
+          <Key>
+            <PropertyRef Name="ID_DeviceStatus" />
+          </Key>
+          <Property Name="ID_DeviceStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceType">
+          <Key>
+            <PropertyRef Name="ID_DeviceType" />
+          </Key>
+          <Property Name="ID_DeviceType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID_Employee" />
+          </Key>
+          <Property Name="ID_Employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Patronymic" Type="varchar" MaxLength="40" />
+          <Property Name="Post" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Department" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID_Post" />
+          </Key>
+          <Property Name="ID_Post" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RepairWork">
+          <Key>
+            <PropertyRef Name="ID_RepairWork" />
+          </Key>
+          <Property Name="ID_RepairWork" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartOfWork" Type="datetime" Nullable="false" />
+          <Property Name="EndOfWork" Type="datetime" />
+          <Property Name="Description" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Device" Type="int" Nullable="false" />
+          <Property Name="Master" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="ID_Room" />
+          </Key>
+          <Property Name="ID_Room" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Software">
+          <Key>
+            <PropertyRef Name="ID_Software" />
+          </Key>
+          <Property Name="ID_Software" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LicenseKey" Type="varchar" MaxLength="30" />
+          <Property Name="LicenseKeyDuration" Type="int" />
+          <Property Name="Price" Type="float" />
+          <Property Name="DateOfPurchase" Type="datetime" />
+          <Property Name="SoftwareType" Type="int" Nullable="false" />
+          <Property Name="KeyNeed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftwareInstallation">
+          <Key>
+            <PropertyRef Name="ID_SoftwareInstallation" />
+          </Key>
+          <Property Name="ID_SoftwareInstallation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Device" Type="int" Nullable="false" />
+          <Property Name="Software" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoftwareType">
+          <Key>
+            <PropertyRef Name="ID_SoftwareType" />
+          </Key>
+          <Property Name="ID_SoftwareType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="R_1">
+          <End Role="DeviceType" Type="Self.DeviceType" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Equipment">
-              <PropertyRef Name="id" />
+            <Principal Role="DeviceType">
+              <PropertyRef Name="ID_DeviceType" />
             </Principal>
-            <Dependent Role="Name_Equipment">
-              <PropertyRef Name="Nameid" />
+            <Dependent Role="Device">
+              <PropertyRef Name="DeviceType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище ModelContainer">
-          <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Name_Equipment" EntityType="Self.Name_Equipment" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Name_Equipment_Equipment" Association="Self.FK_Name_Equipment_Equipment">
-            <End Role="Equipment" EntitySet="Equipment" />
-            <End Role="Name_Equipment" EntitySet="Name_Equipment" />
+        <Association Name="R_10">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="DeviceMovement" Type="Self.DeviceMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="ID_Room" />
+            </Principal>
+            <Dependent Role="DeviceMovement">
+              <PropertyRef Name="NewRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_11">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID_Post" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_12">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID_Department" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_13">
+          <End Role="Device" Type="Self.Device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RepairWork" Type="Self.RepairWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="ID_Device" />
+            </Principal>
+            <Dependent Role="RepairWork">
+              <PropertyRef Name="Device" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_14">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RepairWork" Type="Self.RepairWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Employee" />
+            </Principal>
+            <Dependent Role="RepairWork">
+              <PropertyRef Name="Master" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_15">
+          <End Role="Device" Type="Self.Device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SoftwareInstallation" Type="Self.SoftwareInstallation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="ID_Device" />
+            </Principal>
+            <Dependent Role="SoftwareInstallation">
+              <PropertyRef Name="Device" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_16">
+          <End Role="Software" Type="Self.Software" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SoftwareInstallation" Type="Self.SoftwareInstallation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Software">
+              <PropertyRef Name="ID_Software" />
+            </Principal>
+            <Dependent Role="SoftwareInstallation">
+              <PropertyRef Name="Software" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_17">
+          <End Role="SoftwareType" Type="Self.SoftwareType" Multiplicity="1" />
+          <End Role="Software" Type="Self.Software" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftwareType">
+              <PropertyRef Name="ID_SoftwareType" />
+            </Principal>
+            <Dependent Role="Software">
+              <PropertyRef Name="SoftwareType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_2">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="ID_Room" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_3">
+          <End Role="DeviceStatus" Type="Self.DeviceStatus" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceStatus">
+              <PropertyRef Name="ID_DeviceStatus" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="DeviceStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_4">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Employee" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="ResponsibleEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_5">
+          <End Role="Device" Type="Self.Device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Characteristic" Type="Self.Characteristic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="ID_Device" />
+            </Principal>
+            <Dependent Role="Characteristic">
+              <PropertyRef Name="Device" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_7">
+          <End Role="Device" Type="Self.Device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DeviceMovement" Type="Self.DeviceMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="ID_Device" />
+            </Principal>
+            <Dependent Role="DeviceMovement">
+              <PropertyRef Name="Device" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_8">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DeviceMovement" Type="Self.DeviceMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Employee" />
+            </Principal>
+            <Dependent Role="DeviceMovement">
+              <PropertyRef Name="Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_9">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="DeviceMovement" Type="Self.DeviceMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="ID_Room" />
+            </Principal>
+            <Dependent Role="DeviceMovement">
+              <PropertyRef Name="PreviousRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ComputerTechniqueModelContainer">
+          <EntitySet Name="Characteristic" EntityType="Self.Characteristic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Device" EntityType="Self.Device" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceMovement" EntityType="Self.DeviceMovement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceStatus" EntityType="Self.DeviceStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceType" EntityType="Self.DeviceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RepairWork" EntityType="Self.RepairWork" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Software" EntityType="Self.Software" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftwareInstallation" EntityType="Self.SoftwareInstallation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoftwareType" EntityType="Self.SoftwareType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="R_1" Association="Self.R_1">
+            <End Role="DeviceType" EntitySet="DeviceType" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="R_10" Association="Self.R_10">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="DeviceMovement" EntitySet="DeviceMovement" />
+          </AssociationSet>
+          <AssociationSet Name="R_11" Association="Self.R_11">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="R_12" Association="Self.R_12">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="R_13" Association="Self.R_13">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="RepairWork" EntitySet="RepairWork" />
+          </AssociationSet>
+          <AssociationSet Name="R_14" Association="Self.R_14">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="RepairWork" EntitySet="RepairWork" />
+          </AssociationSet>
+          <AssociationSet Name="R_15" Association="Self.R_15">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="SoftwareInstallation" EntitySet="SoftwareInstallation" />
+          </AssociationSet>
+          <AssociationSet Name="R_16" Association="Self.R_16">
+            <End Role="Software" EntitySet="Software" />
+            <End Role="SoftwareInstallation" EntitySet="SoftwareInstallation" />
+          </AssociationSet>
+          <AssociationSet Name="R_17" Association="Self.R_17">
+            <End Role="SoftwareType" EntitySet="SoftwareType" />
+            <End Role="Software" EntitySet="Software" />
+          </AssociationSet>
+          <AssociationSet Name="R_2" Association="Self.R_2">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="R_3" Association="Self.R_3">
+            <End Role="DeviceStatus" EntitySet="DeviceStatus" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="R_4" Association="Self.R_4">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="R_5" Association="Self.R_5">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="Characteristic" EntitySet="Characteristic" />
+          </AssociationSet>
+          <AssociationSet Name="R_7" Association="Self.R_7">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="DeviceMovement" EntitySet="DeviceMovement" />
+          </AssociationSet>
+          <AssociationSet Name="R_8" Association="Self.R_8">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="DeviceMovement" EntitySet="DeviceMovement" />
+          </AssociationSet>
+          <AssociationSet Name="R_9" Association="Self.R_9">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="DeviceMovement" EntitySet="DeviceMovement" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Authorization">
+      <Schema Namespace="ComputerTechniqueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Characteristic">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID_Characteristic" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Characteristic" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Device" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Device1" Relationship="Self.R_5" FromRole="Characteristic" ToRole="Device" />
         </EntityType>
-        <EntityType Name="Equipment">
+        <EntityType Name="Department">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ID_Department" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="SerialNumber" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Name_Equipment" Relationship="Self.FK_Name_Equipment_Equipment" FromRole="Equipment" ToRole="Name_Equipment" />
+          <Property Name="ID_Department" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.R_12" FromRole="Department" ToRole="Employee" />
         </EntityType>
-        <EntityType Name="Name_Equipment">
+        <EntityType Name="Device">
           <Key>
-            <PropertyRef Name="Nameid" />
+            <PropertyRef Name="ID_Device" />
           </Key>
-          <Property Name="Nameid" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Equipment" Relationship="Self.FK_Name_Equipment_Equipment" FromRole="Name_Equipment" ToRole="Equipment" />
+          <Property Name="ID_Device" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InventoryNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeviceType" Type="Int32" Nullable="false" />
+          <Property Name="DeviceStatus" Type="Int32" Nullable="false" />
+          <Property Name="Room" Type="Int32" Nullable="false" />
+          <Property Name="DateOfPurchase" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GuarantyPeriod" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="ResponsibleEmployee" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Characteristic" Relationship="Self.R_5" FromRole="Device" ToRole="Characteristic" />
+          <NavigationProperty Name="DeviceType1" Relationship="Self.R_1" FromRole="Device" ToRole="DeviceType" />
+          <NavigationProperty Name="RepairWork" Relationship="Self.R_13" FromRole="Device" ToRole="RepairWork" />
+          <NavigationProperty Name="SoftwareInstallation" Relationship="Self.R_15" FromRole="Device" ToRole="SoftwareInstallation" />
+          <NavigationProperty Name="Room1" Relationship="Self.R_2" FromRole="Device" ToRole="Room" />
+          <NavigationProperty Name="DeviceStatus1" Relationship="Self.R_3" FromRole="Device" ToRole="DeviceStatus" />
+          <NavigationProperty Name="Employee" Relationship="Self.R_4" FromRole="Device" ToRole="Employee" />
+          <NavigationProperty Name="DeviceMovement" Relationship="Self.R_7" FromRole="Device" ToRole="DeviceMovement" />
         </EntityType>
-        <Association Name="FK_Name_Equipment_Equipment">
-          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
-          <End Role="Name_Equipment" Type="Self.Name_Equipment" Multiplicity="0..1" />
+        <EntityType Name="DeviceMovement">
+          <Key>
+            <PropertyRef Name="ID_DeviceMovement" />
+          </Key>
+          <Property Name="ID_DeviceMovement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Device" Type="Int32" Nullable="false" />
+          <Property Name="DateOfMovement" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Employee" Type="Int32" Nullable="false" />
+          <Property Name="PreviousRoom" Type="Int32" Nullable="false" />
+          <Property Name="NewRoom" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Device1" Relationship="Self.R_7" FromRole="DeviceMovement" ToRole="Device" />
+          <NavigationProperty Name="Room" Relationship="Self.R_10" FromRole="DeviceMovement" ToRole="Room" />
+          <NavigationProperty Name="Employee1" Relationship="Self.R_8" FromRole="DeviceMovement" ToRole="Employee" />
+          <NavigationProperty Name="Room1" Relationship="Self.R_9" FromRole="DeviceMovement" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="DeviceStatus">
+          <Key>
+            <PropertyRef Name="ID_DeviceStatus" />
+          </Key>
+          <Property Name="ID_DeviceStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="Self.R_3" FromRole="DeviceStatus" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="DeviceType">
+          <Key>
+            <PropertyRef Name="ID_DeviceType" />
+          </Key>
+          <Property Name="ID_DeviceType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="Self.R_1" FromRole="DeviceType" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID_Employee" />
+          </Key>
+          <Property Name="ID_Employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Surname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Post" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Department" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department1" Relationship="Self.R_12" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Device" Relationship="Self.R_4" FromRole="Employee" ToRole="Device" />
+          <NavigationProperty Name="DeviceMovement" Relationship="Self.R_8" FromRole="Employee" ToRole="DeviceMovement" />
+          <NavigationProperty Name="Post1" Relationship="Self.R_11" FromRole="Employee" ToRole="Post" />
+          <NavigationProperty Name="RepairWork" Relationship="Self.R_14" FromRole="Employee" ToRole="RepairWork" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID_Post" />
+          </Key>
+          <Property Name="ID_Post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.R_11" FromRole="Post" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="RepairWork">
+          <Key>
+            <PropertyRef Name="ID_RepairWork" />
+          </Key>
+          <Property Name="ID_RepairWork" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartOfWork" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndOfWork" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Device" Type="Int32" Nullable="false" />
+          <Property Name="Master" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Device1" Relationship="Self.R_13" FromRole="RepairWork" ToRole="Device" />
+          <NavigationProperty Name="Employee" Relationship="Self.R_14" FromRole="RepairWork" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="ID_Room" />
+          </Key>
+          <Property Name="ID_Room" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="Self.R_2" FromRole="Room" ToRole="Device" />
+          <NavigationProperty Name="DeviceMovement" Relationship="Self.R_10" FromRole="Room" ToRole="DeviceMovement" />
+          <NavigationProperty Name="DeviceMovement1" Relationship="Self.R_9" FromRole="Room" ToRole="DeviceMovement" />
+        </EntityType>
+        <EntityType Name="Software">
+          <Key>
+            <PropertyRef Name="ID_Software" />
+          </Key>
+          <Property Name="ID_Software" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LicenseKey" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LicenseKeyDuration" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="DateOfPurchase" Type="DateTime" Precision="3" />
+          <Property Name="SoftwareType" Type="Int32" Nullable="false" />
+          <Property Name="KeyNeed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SoftwareInstallation" Relationship="Self.R_16" FromRole="Software" ToRole="SoftwareInstallation" />
+          <NavigationProperty Name="SoftwareType1" Relationship="Self.R_17" FromRole="Software" ToRole="SoftwareType" />
+        </EntityType>
+        <EntityType Name="SoftwareInstallation">
+          <Key>
+            <PropertyRef Name="ID_SoftwareInstallation" />
+          </Key>
+          <Property Name="ID_SoftwareInstallation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Device" Type="Int32" Nullable="false" />
+          <Property Name="Software" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Device1" Relationship="Self.R_15" FromRole="SoftwareInstallation" ToRole="Device" />
+          <NavigationProperty Name="Software1" Relationship="Self.R_16" FromRole="SoftwareInstallation" ToRole="Software" />
+        </EntityType>
+        <EntityType Name="SoftwareType">
+          <Key>
+            <PropertyRef Name="ID_SoftwareType" />
+          </Key>
+          <Property Name="ID_SoftwareType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Software" Relationship="Self.R_17" FromRole="SoftwareType" ToRole="Software" />
+        </EntityType>
+        <Association Name="R_5">
+          <End Role="Device" Type="Self.Device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Characteristic" Type="Self.Characteristic" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Equipment">
-              <PropertyRef Name="id" />
+            <Principal Role="Device">
+              <PropertyRef Name="ID_Device" />
             </Principal>
-            <Dependent Role="Name_Equipment">
-              <PropertyRef Name="Nameid" />
+            <Dependent Role="Characteristic">
+              <PropertyRef Name="Device" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_12">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID_Department" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_1">
+          <End Role="DeviceType" Type="Self.DeviceType" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceType">
+              <PropertyRef Name="ID_DeviceType" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="DeviceType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_13">
+          <End Role="Device" Type="Self.Device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RepairWork" Type="Self.RepairWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="ID_Device" />
+            </Principal>
+            <Dependent Role="RepairWork">
+              <PropertyRef Name="Device" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_15">
+          <End Role="Device" Type="Self.Device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SoftwareInstallation" Type="Self.SoftwareInstallation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="ID_Device" />
+            </Principal>
+            <Dependent Role="SoftwareInstallation">
+              <PropertyRef Name="Device" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_2">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="ID_Room" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_3">
+          <End Role="DeviceStatus" Type="Self.DeviceStatus" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceStatus">
+              <PropertyRef Name="ID_DeviceStatus" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="DeviceStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_4">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Employee" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="ResponsibleEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_7">
+          <End Role="Device" Type="Self.Device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DeviceMovement" Type="Self.DeviceMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="ID_Device" />
+            </Principal>
+            <Dependent Role="DeviceMovement">
+              <PropertyRef Name="Device" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_10">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="DeviceMovement" Type="Self.DeviceMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="ID_Room" />
+            </Principal>
+            <Dependent Role="DeviceMovement">
+              <PropertyRef Name="NewRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_8">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DeviceMovement" Type="Self.DeviceMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Employee" />
+            </Principal>
+            <Dependent Role="DeviceMovement">
+              <PropertyRef Name="Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_9">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="DeviceMovement" Type="Self.DeviceMovement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="ID_Room" />
+            </Principal>
+            <Dependent Role="DeviceMovement">
+              <PropertyRef Name="PreviousRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_11">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID_Post" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_14">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RepairWork" Type="Self.RepairWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID_Employee" />
+            </Principal>
+            <Dependent Role="RepairWork">
+              <PropertyRef Name="Master" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_16">
+          <End Role="Software" Type="Self.Software" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SoftwareInstallation" Type="Self.SoftwareInstallation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Software">
+              <PropertyRef Name="ID_Software" />
+            </Principal>
+            <Dependent Role="SoftwareInstallation">
+              <PropertyRef Name="Software" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_17">
+          <End Role="SoftwareType" Type="Self.SoftwareType" Multiplicity="1" />
+          <End Role="Software" Type="Self.Software" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoftwareType">
+              <PropertyRef Name="ID_SoftwareType" />
+            </Principal>
+            <Dependent Role="Software">
+              <PropertyRef Name="SoftwareType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Equipment_accountingEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Authorization" EntityType="Self.Authorization" />
-          <EntitySet Name="Equipment" EntityType="Self.Equipment" />
-          <EntitySet Name="Name_Equipment" EntityType="Self.Name_Equipment" />
-          <AssociationSet Name="FK_Name_Equipment_Equipment" Association="Self.FK_Name_Equipment_Equipment">
-            <End Role="Equipment" EntitySet="Equipment" />
-            <End Role="Name_Equipment" EntitySet="Name_Equipment" />
+          <EntitySet Name="Characteristic" EntityType="Self.Characteristic" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="Device" EntityType="Self.Device" />
+          <EntitySet Name="DeviceMovement" EntityType="Self.DeviceMovement" />
+          <EntitySet Name="DeviceStatus" EntityType="Self.DeviceStatus" />
+          <EntitySet Name="DeviceType" EntityType="Self.DeviceType" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="RepairWork" EntityType="Self.RepairWork" />
+          <EntitySet Name="Room" EntityType="Self.Room" />
+          <EntitySet Name="Software" EntityType="Self.Software" />
+          <EntitySet Name="SoftwareInstallation" EntityType="Self.SoftwareInstallation" />
+          <EntitySet Name="SoftwareType" EntityType="Self.SoftwareType" />
+          <AssociationSet Name="R_5" Association="Self.R_5">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="Characteristic" EntitySet="Characteristic" />
+          </AssociationSet>
+          <AssociationSet Name="R_12" Association="Self.R_12">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="R_1" Association="Self.R_1">
+            <End Role="DeviceType" EntitySet="DeviceType" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="R_13" Association="Self.R_13">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="RepairWork" EntitySet="RepairWork" />
+          </AssociationSet>
+          <AssociationSet Name="R_15" Association="Self.R_15">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="SoftwareInstallation" EntitySet="SoftwareInstallation" />
+          </AssociationSet>
+          <AssociationSet Name="R_2" Association="Self.R_2">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="R_3" Association="Self.R_3">
+            <End Role="DeviceStatus" EntitySet="DeviceStatus" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="R_4" Association="Self.R_4">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="R_7" Association="Self.R_7">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="DeviceMovement" EntitySet="DeviceMovement" />
+          </AssociationSet>
+          <AssociationSet Name="R_10" Association="Self.R_10">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="DeviceMovement" EntitySet="DeviceMovement" />
+          </AssociationSet>
+          <AssociationSet Name="R_8" Association="Self.R_8">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="DeviceMovement" EntitySet="DeviceMovement" />
+          </AssociationSet>
+          <AssociationSet Name="R_9" Association="Self.R_9">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="DeviceMovement" EntitySet="DeviceMovement" />
+          </AssociationSet>
+          <AssociationSet Name="R_11" Association="Self.R_11">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="R_14" Association="Self.R_14">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="RepairWork" EntitySet="RepairWork" />
+          </AssociationSet>
+          <AssociationSet Name="R_16" Association="Self.R_16">
+            <End Role="Software" EntitySet="Software" />
+            <End Role="SoftwareInstallation" EntitySet="SoftwareInstallation" />
+          </AssociationSet>
+          <AssociationSet Name="R_17" Association="Self.R_17">
+            <End Role="SoftwareType" EntitySet="SoftwareType" />
+            <End Role="Software" EntitySet="Software" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -107,30 +861,138 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Equipment_accountingEntities">
-          <EntitySetMapping Name="Authorization">
-            <EntityTypeMapping TypeName="Model.Authorization">
-              <MappingFragment StoreEntitySet="Authorization">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
+        <EntityContainerMapping StorageEntityContainer="Хранилище ComputerTechniqueModelContainer" CdmEntityContainer="Equipment_accountingEntities">
+          <EntitySetMapping Name="Characteristic">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.Characteristic">
+              <MappingFragment StoreEntitySet="Characteristic">
+                <ScalarProperty Name="ID_Characteristic" ColumnName="ID_Characteristic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Equipment">
-            <EntityTypeMapping TypeName="Model.Equipment">
-              <MappingFragment StoreEntitySet="Equipment">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="ID_Department" ColumnName="ID_Department" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Name_Equipment">
-            <EntityTypeMapping TypeName="Model.Name_Equipment">
-              <MappingFragment StoreEntitySet="Name_Equipment">
-                <ScalarProperty Name="Nameid" ColumnName="Nameid" />
+          <EntitySetMapping Name="Device">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.Device">
+              <MappingFragment StoreEntitySet="Device">
+                <ScalarProperty Name="ID_Device" ColumnName="ID_Device" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="InventoryNumber" ColumnName="InventoryNumber" />
+                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+                <ScalarProperty Name="DeviceStatus" ColumnName="DeviceStatus" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="DateOfPurchase" ColumnName="DateOfPurchase" />
+                <ScalarProperty Name="GuarantyPeriod" ColumnName="GuarantyPeriod" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ResponsibleEmployee" ColumnName="ResponsibleEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceMovement">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.DeviceMovement">
+              <MappingFragment StoreEntitySet="DeviceMovement">
+                <ScalarProperty Name="ID_DeviceMovement" ColumnName="ID_DeviceMovement" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="DateOfMovement" ColumnName="DateOfMovement" />
+                <ScalarProperty Name="Employee" ColumnName="Employee" />
+                <ScalarProperty Name="PreviousRoom" ColumnName="PreviousRoom" />
+                <ScalarProperty Name="NewRoom" ColumnName="NewRoom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceStatus">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.DeviceStatus">
+              <MappingFragment StoreEntitySet="DeviceStatus">
+                <ScalarProperty Name="ID_DeviceStatus" ColumnName="ID_DeviceStatus" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceType">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.DeviceType">
+              <MappingFragment StoreEntitySet="DeviceType">
+                <ScalarProperty Name="ID_DeviceType" ColumnName="ID_DeviceType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID_Employee" ColumnName="ID_Employee" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepairWork">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.RepairWork">
+              <MappingFragment StoreEntitySet="RepairWork">
+                <ScalarProperty Name="ID_RepairWork" ColumnName="ID_RepairWork" />
+                <ScalarProperty Name="StartOfWork" ColumnName="StartOfWork" />
+                <ScalarProperty Name="EndOfWork" ColumnName="EndOfWork" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="Master" ColumnName="Master" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Room">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="ID_Room" ColumnName="ID_Room" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Software">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.Software">
+              <MappingFragment StoreEntitySet="Software">
+                <ScalarProperty Name="ID_Software" ColumnName="ID_Software" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LicenseKey" ColumnName="LicenseKey" />
+                <ScalarProperty Name="LicenseKeyDuration" ColumnName="LicenseKeyDuration" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DateOfPurchase" ColumnName="DateOfPurchase" />
+                <ScalarProperty Name="SoftwareType" ColumnName="SoftwareType" />
+                <ScalarProperty Name="KeyNeed" ColumnName="KeyNeed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftwareInstallation">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.SoftwareInstallation">
+              <MappingFragment StoreEntitySet="SoftwareInstallation">
+                <ScalarProperty Name="ID_SoftwareInstallation" ColumnName="ID_SoftwareInstallation" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="Software" ColumnName="Software" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoftwareType">
+            <EntityTypeMapping TypeName="ComputerTechniqueModel.SoftwareType">
+              <MappingFragment StoreEntitySet="SoftwareType">
+                <ScalarProperty Name="ID_SoftwareType" ColumnName="ID_SoftwareType" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>

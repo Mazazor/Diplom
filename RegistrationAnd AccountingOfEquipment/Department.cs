@@ -12,11 +12,18 @@ namespace RegistrationAnd_AccountingOfEquipment
     using System;
     using System.Collections.Generic;
     
-    public partial class Authorization
+    public partial class Department
     {
-        public int id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Department()
+        {
+            this.Employee = new HashSet<Employee>();
+        }
+    
+        public int ID_Department { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employee { get; set; }
     }
 }

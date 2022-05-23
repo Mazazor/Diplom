@@ -12,12 +12,13 @@ namespace RegistrationAnd_AccountingOfEquipment
     using System;
     using System.Collections.Generic;
     
-    public partial class Equipment
+    public partial class Characteristic
     {
-        public int id { get; set; }
-        public int Quantity { get; set; }
-        public int SerialNumber { get; set; }
+        public int ID_Characteristic { get; set; }
+        public string Name { get; set; }
+        public string Value { get; set; }
+        public int Device { get; set; }
     
-        public virtual Name_Equipment Name_Equipment { get; set; }
+        public virtual Device Device1 { get; set; }
     }
 }

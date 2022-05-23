@@ -12,11 +12,16 @@ namespace RegistrationAnd_AccountingOfEquipment
     using System;
     using System.Collections.Generic;
     
-    public partial class Name_Equipment
+    public partial class RepairWork
     {
-        public int Nameid { get; set; }
-        public string Name { get; set; }
+        public int ID_RepairWork { get; set; }
+        public System.DateTime StartOfWork { get; set; }
+        public Nullable<System.DateTime> EndOfWork { get; set; }
+        public string Description { get; set; }
+        public int Device { get; set; }
+        public int Master { get; set; }
     
-        public virtual Equipment Equipment { get; set; }
+        public virtual Device Device1 { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

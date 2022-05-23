@@ -17,9 +17,9 @@ namespace RegistrationAnd_AccountingOfEquipment
     /// <summary>
     /// Логика взаимодействия для Software.xaml
     /// </summary>
-    public partial class Software : Window
+    public partial class SoftwareWindow : Window
     {
-        public Software()
+        public SoftwareWindow()
         {
             InitializeComponent();
         }

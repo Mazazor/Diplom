@@ -4,11 +4,36 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9cd0215d74fc47b6b2f8184f9100ef5b" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Authorization" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Equipment" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Name_Equipment" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_Name_Equipment_Equipment" ManuallyRouted="false" />
+      <Diagram DiagramId="1921bbf85c99425baeedd358b5a6eb4a" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="ComputerTechniqueModel.Characteristic" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.Department" Width="1.5" PointX="1.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.Device" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.DeviceMovement" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.DeviceStatus" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.DeviceType" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.Employee" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.Post" Width="1.5" PointX="1.5" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.RepairWork" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.Room" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.Software" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.SoftwareInstallation" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ComputerTechniqueModel.SoftwareType" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_5" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_12" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_1" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_13" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_15" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_2" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_3" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_4" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_7" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_10" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_8" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_9" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_11" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_14" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_16" ManuallyRouted="false" />
+        <AssociationConnector Association="ComputerTechniqueModel.R_17" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

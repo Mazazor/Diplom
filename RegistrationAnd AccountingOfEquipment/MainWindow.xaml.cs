@@ -28,26 +28,26 @@ namespace RegistrationAnd_AccountingOfEquipment
        
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
-            
-            Device equipmentwindow = new Device();
+
+            DeviceWindow equipmentwindow = new DeviceWindow();
             equipmentwindow.Show();
             
         }
             
         private void Button_Dell_Click(object sender, RoutedEventArgs e)
         {
-            var equipmentForRemoving = DataGrid.SelectedItems.Cast<Equipment>().ToList();
+            var equipmentForRemoving = DataGrid.SelectedItems.Cast<Device>().ToList();
 
             if(MessageBox.Show($"Вы точно хотте удалить следующие{equipmentForRemoving.Count()} элементов?", "Внимание",
                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    Equipment_accountingEntities.GetContext().Equipment.RemoveRange(equipmentForRemoving);
+                    Equipment_accountingEntities.GetContext().Device.RemoveRange(equipmentForRemoving);
                     Equipment_accountingEntities.GetContext().SaveChanges();
                     MessageBox.Show("Данные удалины!");
 
-                    DataGrid.ItemsSource = Equipment_accountingEntities.GetContext().Equipment.ToList();
+                    DataGrid.ItemsSource = Equipment_accountingEntities.GetContext().Device.ToList();
                 }
                 catch(Exception ex)
                 {
@@ -58,8 +58,8 @@ namespace RegistrationAnd_AccountingOfEquipment
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
         {
 
-            WindowEdit equipmentwindow = new WindowEdit((sender as Button).DataContext as Equipment);
-            equipmentwindow.Show();
+           // WindowEdit equipmentwindow = new WindowEdit((sender as Button).DataContext as Device);
+           // equipmentwindow.Show();
             Close();
         }
 
@@ -69,20 +69,20 @@ namespace RegistrationAnd_AccountingOfEquipment
             if (Visibility == Visibility.Visible)
             {
                 Equipment_accountingEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DataGrid.ItemsSource = Equipment_accountingEntities.GetContext().Equipment.ToList();
+                DataGrid.ItemsSource = Equipment_accountingEntities.GetContext().Device.ToList();
             }
         }
 
         private void Button_Add4_Click(object sender, RoutedEventArgs e)
         {
-            Employee equipmentwindow = new Employee();
+            EmployeeWindow equipmentwindow = new EmployeeWindow();
             equipmentwindow.Show();
             
         }
 
         private void Button_Add1_Click(object sender, RoutedEventArgs e)
         {
-            Software equipmentwindow = new Software();
+            SoftwareWindow equipmentwindow = new SoftwareWindow();
             equipmentwindow.Show();
             
         }
