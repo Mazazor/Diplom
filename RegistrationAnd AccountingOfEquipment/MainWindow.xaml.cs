@@ -70,7 +70,12 @@ namespace RegistrationAnd_AccountingOfEquipment
             {
                 Equipment_accountingEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
                 DataGrid.ItemsSource = Equipment_accountingEntities.GetContext().Device.ToList();
+                DataGrid1.ItemsSource = Equipment_accountingEntities.GetContext().Software.ToList();
+                DataGrid2.ItemsSource = Equipment_accountingEntities.GetContext().DeviceMovement.ToList();
+                DataGrid3.ItemsSource = Equipment_accountingEntities.GetContext().RepairWork.ToList();
+                DataGrid4.ItemsSource = Equipment_accountingEntities.GetContext().Employee.ToList();
             }
+            
         }
 
         private void Button_Add4_Click(object sender, RoutedEventArgs e)
